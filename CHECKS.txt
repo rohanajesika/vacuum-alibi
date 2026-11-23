@@ -1,0 +1,31 @@
+# CHECKS — vacuum-alibi (build session, 2026-11-24 ~06:45 WIB)
+# Node 22.21.1 asli: ~/workspace/makefun/_tools/node22/bin/node
+
+Line terpilih (99 karakter, 99 byte, 18 kata, 1 baris, tanpa newline):
+  I did not miss that spot. I classified it as a permanent resident and granted it squatter's rights.
+
+Uji lokal (Node 22.21.1):
+- Run 1 (v1, sebelum revisi): exit 0, entry.txt 99 byte / 99 karakter.
+- Run 2 + run 3 (v2, sesudah revisi): exit 0, byte-identical (deterministik).
+- Gate 1-200 karakter: PASS. Satu baris (tanpa \n/\r): PASS.
+- Uji negatif (salinan di luar repo):
+  - baris 229 karakter -> exit 1 ("line is 229 characters, must be 1-200"), tanpa entry.txt.
+  - newline di dalam baris -> exit 1, tanpa entry.txt.
+  - double space di dalam baris -> exit 1, tanpa entry.txt.
+- Simulasi grader (binary Node 22.21.1, folder entri read-only 555,
+  user 65534/nobody, cwd /, tanpa network via unshare -n, env bersih,
+  MAKEFUN_OUTPUT_DIR kosong): exit 0 dalam 0,09 detik (< 60 dtk),
+  entry.txt byte-identical dengan run lokal, file stale di dalam
+  direktori output utuh (direktori /output tidak pernah dihapus).
+
+Revisi nyata (thinking_revised): v1 -> v2 — koreksi panjang di komentar
+(104 -> 99 karakter, diukur dari run pertama) + tambah guard double-space
+di dalam baris, lalu re-run dan skor baru di atas sebagai bukti.
+
+Kualitas (review penuh sebelum submit):
+- Brief "alasan paling lucu robot vacuum melewatkan satu titik" -> baris
+  adalah alasan vacuum itu sendiri atas satu titik yang terlewat.
+- Deadpan: penolakan datar + laporan klasifikasi birokratis.
+- Kejutan: "squatter's rights" — hak hukum yang tak terduga untuk debu.
+- Keketatan: 2 kalimat, 99 karakter, punch ("squatter's rights") kata terakhir.
+- Deterministik: tanpa fetch, tanpa randomness, tanpa clock.
